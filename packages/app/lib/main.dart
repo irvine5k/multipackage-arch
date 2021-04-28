@@ -11,7 +11,7 @@ void main() {
 
 class MyApp extends StatelessWidget with App {
   MyApp({
-    Key key,
+    Key? key,
   }) : super(key: key) {
     initRoutes();
   }
@@ -41,7 +41,7 @@ class MyApp extends StatelessWidget with App {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title = ''}) : super(key: key);
 
   final String title;
 
