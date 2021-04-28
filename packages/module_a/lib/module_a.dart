@@ -17,7 +17,7 @@ class Home extends StatefulWidget {
   final String title;
 
   const Home({
-    Key key,
+    Key? key,
     this.title = '',
   }) : super(key: key);
 
