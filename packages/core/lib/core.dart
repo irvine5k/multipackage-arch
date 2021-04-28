@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 final navigatorKey = GlobalKey<NavigatorState>();
 
 typedef WidgetBuilderWithArgs = Widget Function(
-    BuildContext context, Object args);
+    BuildContext context, Object? args);
 
 abstract class Module {
   String get moduleName;
@@ -22,12 +22,12 @@ abstract class App {
 
   void initRoutes() {
     print('INIT ROUTES');
-    if (mainRoutes?.isNotEmpty ?? false) {
+    if (mainRoutes.isNotEmpty) {
       routes.addAll(mainRoutes);
     }
 
     print('Modules:');
-    if (modules?.isNotEmpty ?? false) {
+    if (modules.isNotEmpty) {
       for (final module in modules) {
         print(module.moduleName);
         routes.addAll(module.routes);
@@ -41,7 +41,7 @@ abstract class App {
     final routeName = settings.name;
     final routeArguments = settings.arguments;
 
-    final route = routes[routeName];
+    final route = routes[routeName!];
 
     return MaterialPageRoute(
       builder: (context) =>
