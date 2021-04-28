@@ -1,7 +1,6 @@
 library module_b;
 
 import 'package:core/core.dart';
-import 'package:core/event_bus.dart';
 import 'package:flutter/material.dart';
 
 class ModuleB implements Module {
@@ -33,24 +32,4 @@ class Home extends StatelessWidget {
       ),
     );
   }
-}
-
-class Trigger extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return FlatButton(
-      color: Colors.red,
-      child: Text('Mandar Mensagem'),
-      onPressed: () => AppEventBus.emit(HomeEvent(Text('oi'))),
-    );
-  }
-}
-
-class HomeEvent implements Event {
-  final Widget widget;
-
-  HomeEvent(this.widget);
-
-  @override
-  Widget get message => widget;
 }

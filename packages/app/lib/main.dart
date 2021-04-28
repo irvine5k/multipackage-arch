@@ -1,5 +1,4 @@
 import 'package:core/core.dart';
-import 'package:core/event_bus.dart';
 import 'package:flutter/material.dart';
 import 'package:module_a/module_a.dart';
 import 'package:module_b/module_b.dart';
@@ -87,17 +86,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 context,
                 '/homeA',
               ),
-            ),
-            Trigger(),
-            StreamBuilder<Event>(
-              stream: AppEventBus.instance.eventBus,
-              builder: (context, snapshot) {
-                if (snapshot.hasData && snapshot.data is HomeEvent) {
-                  return (snapshot.data as HomeEvent).message;
-                }
-
-                return Container();
-              },
             ),
             TextButton(
               child: Text(

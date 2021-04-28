@@ -51,8 +51,7 @@ class _CounterWidgetState extends State<CounterWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return FlatButton(
-      color: Colors.blue,
+    return TextButton(
       child: Text('Incrementar'),
       onPressed: () => increment(context),
     );
