@@ -17,7 +17,7 @@ class Home extends StatelessWidget {
   final String title;
 
   const Home({
-    Key key,
+    Key? key,
     this.title = '',
   });
 
