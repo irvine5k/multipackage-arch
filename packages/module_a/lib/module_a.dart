@@ -35,31 +35,3 @@ class _HomeState extends State<Home> {
     );
   }
 }
-
-class CounterWidget extends StatefulWidget {
-  @override
-  _CounterWidgetState createState() => _CounterWidgetState();
-}
-
-class _CounterWidgetState extends State<CounterWidget> {
-  int count = 0;
-
-  void increment(BuildContext context) {
-    setState(() => count += 1);
-    CountNotification(count).dispatch(context);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      child: Text('Incrementar'),
-      onPressed: () => increment(context),
-    );
-  }
-}
-
-class CountNotification extends Notification {
-  final int count;
-
-  CountNotification(this.count);
-}

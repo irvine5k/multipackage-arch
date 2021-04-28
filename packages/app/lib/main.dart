@@ -4,40 +4,31 @@ import 'package:module_a/module_a.dart';
 import 'package:module_b/module_b.dart';
 
 void main() {
-  runApp(
-    MyApp(),
-  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget with App {
-  MyApp({
-    Key? key,
-  }) : super(key: key) {
-    initRoutes();
+  MyApp() {
+    // initRoutes();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: navigatorKey,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-      onGenerateRoute: generateRoutes,
-    );
-  }
-
-  @override
-  Map<String, WidgetBuilderWithArgs> get mainRoutes => {};
 
   @override
   List<Module> get modules => [
         ModuleA(),
         ModuleB(),
       ];
+
+  @override
+  Widget build(BuildContext context) => MaterialApp(
+        navigatorKey: navigatorKey,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: MyHomePage(title: 'Flutter Demo Home Page'),
+        onGenerateRoute: generateRoutes,
+      );
 }
 
 class MyHomePage extends StatefulWidget {
@@ -62,22 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            NotificationListener<CountNotification>(
-              onNotification: (notification) {
-                setState(
-                  () => countA = notification.count,
-                );
-
-                return true;
-              },
-              child: Column(
-                children: [
-                  Text('Count A: $countA'),
-                  const SizedBox(height: 20),
-                  CounterWidget(),
-                ],
-              ),
-            ),
             TextButton(
               child: Text(
                 'HomeA',

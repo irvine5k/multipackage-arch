@@ -27,9 +27,6 @@ class Home extends StatelessWidget {
       appBar: AppBar(
         title: Text(title),
       ),
-      body: Container(
-        child: Text(title),
-      ),
     );
   }
 }

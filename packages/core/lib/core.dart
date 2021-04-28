@@ -16,32 +16,26 @@ abstract class Module {
 abstract class App {
   List<Module> get modules;
 
-  Map<String, WidgetBuilderWithArgs> get mainRoutes;
+  late final Map<String, WidgetBuilderWithArgs> _routes = _getAllRoutes();
 
-  final Map<String, WidgetBuilderWithArgs> routes = {};
+  Map<String, WidgetBuilderWithArgs> _getAllRoutes() {
+    Map<String, WidgetBuilderWithArgs> allRoutes = {};
 
-  void initRoutes() {
-    print('INIT ROUTES');
-    if (mainRoutes.isNotEmpty) {
-      routes.addAll(mainRoutes);
-    }
-
-    print('Modules:');
     if (modules.isNotEmpty) {
       for (final module in modules) {
-        print(module.moduleName);
-        routes.addAll(module.routes);
+        final routes = module.routes;
+        allRoutes.addAll(routes);
       }
     }
 
-    print('Routes: $routes');
+    return allRoutes;
   }
 
   Route<Object> generateRoutes(RouteSettings settings) {
     final routeName = settings.name;
     final routeArguments = settings.arguments;
 
-    final route = routes[routeName!];
+    final route = _routes[routeName!];
 
     return MaterialPageRoute(
       builder: (context) =>
